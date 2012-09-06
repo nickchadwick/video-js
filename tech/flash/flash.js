@@ -51,7 +51,13 @@ _V_.flash = _V_.PlaybackTech.extend({
 
     // If source was supplied pass as a flash var.
     if (source) {
-      flashVars.src = encodeURIComponent(_V_.getAbsoluteURL(source.src));
+      var scheme = _V_.getURIScheme(source);
+      if (scheme == 'rtmp') {
+        flashVars.RTMPConnection = _V_.getURIBase(source);
+        flashVars.RTMPStream = _V_.getURILast(source);
+      } else {
+        flashVars.src = encodeURIComponent(_V_.getAbsoluteURL(source.src));
+      }
     }
 
     // Add placeholder to player div
@@ -287,7 +293,7 @@ _V_.flash.prototype.support = {
     "video/x-flv": "FLV",
     "video/mp4": "MP4",
     "video/m4v": "MP4",
-    "video/rtmp": "FLV"
+    "video/rtmp": "RTMP"
   },
 
   // Optional events that we can manually mimic with timers

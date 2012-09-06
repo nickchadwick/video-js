@@ -288,6 +288,24 @@ _V_.extend({
     }
 
     return url;
+  },
+
+  getURIScheme: function(uri){
+    var re = new RegExp("^(\\w+)://.*");
+    var schemearr = re.exec(uri);
+    return schemearr[1];
+  },
+
+  getURIBase: function(uri){
+    var re = new RegExp("(.*)/[^/]+$");
+    var basearr = re.exec(uri);
+    return basearr[1];
+  },
+
+  getURILast: function(uri){
+    var re = new RegExp(".*/([^/]+)$");
+    var lastarr = re.exec(uri);
+    return lastarr[1];
   }
 
 });
@@ -344,3 +362,4 @@ if ("getBoundingClientRect" in document.documentElement) {
     return curleft;
   };
 }
+
