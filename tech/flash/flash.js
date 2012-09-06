@@ -286,7 +286,8 @@ _V_.flash.prototype.support = {
     "video/flv": "FLV",
     "video/x-flv": "FLV",
     "video/mp4": "MP4",
-    "video/m4v": "MP4"
+    "video/m4v": "MP4",
+    "video/rtmp": "FLV"
   },
 
   // Optional events that we can manually mimic with timers
